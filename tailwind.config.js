@@ -23,7 +23,8 @@ module.exports = {
         "mazzanti": {
           black: "#000000",
           gray: "#1A1A1A",
-          green: '#6F9A1A'
+          green: '#6F9A1A',
+          darksky: '#00ACEE'
         },
       },
     },

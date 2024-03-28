@@ -1,15 +1,8 @@
 'use client'
+import { navItems } from '@/app/utils/helpers'
 import Image from 'next/image'
 import Link from 'next/link'
 import React, { useState } from 'react'
-
-const navItems = [
-  { title: 'How it Works', link: '' },
-  { title: 'Probate', link: '' },
-  { title: 'Stop Foreclosure', link: '' },
-  { title: 'Investor Sign Up', link: '' },
-  { title: 'About Us', link: '' },
-]
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
@@ -22,7 +15,7 @@ const Navbar = () => {
           </div>
           <div
             onClick={() => setIsOpen(!isOpen)}
-            className={`h-12 w-12 flex flex-col justify-between items-center rounded cursor-pointer lg:hidden border ${open ? "p-2" : "p-3"
+            className={`h-12 w-12 flex flex-col justify-between items-center rounded cursor-pointer lg:hidden border ${isOpen ? "p-2" : "p-3"
               } z-50`} >
             <div
               className={`w-full h-1 rounded-2xl bg-white transition-all duration-200 ease-in ${isOpen ? "rotate-45 mt-4 block" : ""

@@ -2,10 +2,14 @@
 import { navItems } from '@/app/utils/helpers'
 import Image from 'next/image'
 import Link from 'next/link'
+import { usePathname } from 'next/navigation'
 import React, { useState } from 'react'
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
+  const pathname = usePathname()
+
+  console.log(pathname)
   return (
     <div className='text-white'>
       <div className="lg:hidden flex flex-col gap-2 relative">
@@ -44,7 +48,7 @@ const Navbar = () => {
           </div>
           <div className="flex-1 flex justify-center gap-10">
             {navItems.map((item, index) => (
-              <Link key={index} href={item.link} className='py-3 hover:bg-mazzanti-black/70 hover:text-mazzanti-green'>{item.title}</Link>
+              <Link key={index} href={item.link} className={`py-3 hover:bg-mazzanti-black/70 hover:text-mazzanti-green ${pathname === item.link ? 'text-mazzanti-green':''}`}>{item.title}</Link>
             ))}
           </div>
         </div>

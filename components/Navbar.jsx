@@ -8,7 +8,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false)
   return (
     <div className='text-white'>
-      <div className="lg:hidden h-screen overflow-hidden flex flex-col gap-2">
+      <div className="lg:hidden flex flex-col gap-2 relative">
         <div className="bg-mazzanti-black py-3 px-2 flex justify-between items-center">
           <div className="">
             <Image src='/assets/logo.svg' height={15} width={15} alt='' className='w-12 h-auto' />
@@ -31,7 +31,7 @@ const Navbar = () => {
             ></div>
           </div>
         </div>
-        <div className={`flex-1 bg-mazzanti-black py-3 px-2 w-full h-full flex flex-col transition-all duration-200 ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-20'}`}>
+        <div className={`absolute top-20 bg-mazzanti-black py-3 px-2 w-full h-screen flex flex-col transition-all duration-200 ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-20'}`}>
           {navItems.map((item, index) => (
             <Link key={index} href={item.link} className='py-3 hover:bg-mazzanti-black/70 hover:text-mazzanti-green'>{item.title}</Link>
           ))}

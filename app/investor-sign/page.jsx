@@ -8,7 +8,7 @@ export default function page() {
                     <p className="font-bold text-xl md:text-2xl lg:text-4xl text-center max-w-7xl">Sign Up to be included in our Investor Database to receive new opportunities</p>
                 </div>
                 <div className="space-y-2 py-5">
-                    <p>"*" indicates required fields</p>
+                    <p>&quot;*&quot; indicates required fields</p>
                     <form action="" className='space-y-3'>
                         <div className="grid grid-cols-2 gap-3">
                             <p className='col-span-2'>Name*</p>

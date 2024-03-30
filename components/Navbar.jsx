@@ -2,20 +2,20 @@
 import { navItems } from '@/app/utils/helpers'
 import Image from 'next/image'
 import Link from 'next/link'
-import { usePathname } from 'next/navigation'
+import { usePathname, useRouter } from 'next/navigation'
 import React, { useState } from 'react'
 
 const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false)
-  const pathname = usePathname()
+  const [isOpen, setIsOpen] = useState(false);
+  const pathname = usePathname();
+  const router = useRouter();
 
-  console.log(pathname)
   return (
     <div className='text-white'>
       <div className="lg:hidden flex flex-col gap-2 relative">
         <div className="bg-mazzanti-black py-3 px-2 flex justify-between items-center">
           <div className="">
-            <Image src='/assets/logo.svg' height={15} width={15} alt='' className='w-12 h-auto' />
+            <Image onClick={() => router.push('/')} src='/assets/logo.svg' height={15} width={15} alt='' className='w-12 h-auto cursor-pointer' />
           </div>
           <div
             onClick={() => setIsOpen(!isOpen)}
@@ -44,11 +44,11 @@ const Navbar = () => {
       <div className="hidden lg:block bg-mazzanti-black py-0.5 px-4">
         <div className="max-w-[1440px] mx-auto flex gap-10 items-center">
           <div className="">
-            <Image src='/assets/logo.svg' height={15} width={15} alt='' className='w-20 h-auto' />
+            <Image onClick={() => router.push('/')} src='/assets/logo.svg' height={15} width={15} alt='' className='w-20 h-auto cursor-pointer' />
           </div>
           <div className="flex-1 flex justify-center gap-10">
             {navItems.map((item, index) => (
-              <Link key={index} href={item.link} className={`py-3 hover:bg-mazzanti-black/70 hover:text-mazzanti-green ${pathname === item.link ? 'text-mazzanti-green':''}`}>{item.title}</Link>
+              <Link key={index} href={item.link} className={`py-3 hover:bg-mazzanti-black/70 hover:text-mazzanti-green ${pathname === item.link ? 'text-mazzanti-green' : ''}`}>{item.title}</Link>
             ))}
           </div>
         </div>

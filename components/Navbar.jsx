@@ -12,7 +12,7 @@ const Navbar = () => {
 
   return (
     <div className='text-white'>
-      <div className="lg:hidden flex flex-col gap-2 relative">
+      <div className="lg:hidden flex flex-col gap-2 relative z-50">
         <div className="bg-mazzanti-black py-3 px-2 flex justify-between items-center">
           <div className="">
             <Image onClick={() => router.push('/')} src='/assets/logo.svg' height={15} width={15} alt='' className='w-12 h-auto cursor-pointer' />
@@ -37,7 +37,7 @@ const Navbar = () => {
         </div>
         <div className={`absolute top-20 bg-mazzanti-black py-3 px-2 w-full h-screen flex flex-col transition-all duration-200 ${isOpen ? 'translate-x-0 opacity-100' : '-translate-x-full opacity-20'}`}>
           {navItems.map((item, index) => (
-            <Link key={index} href={item.link} className='py-3 hover:bg-mazzanti-black/70 hover:text-mazzanti-green'>{item.title}</Link>
+            <Link key={index} href={item.link} onClick={() => setIsOpen(!isOpen)} className='py-3 hover:bg-mazzanti-black/70 hover:text-mazzanti-green'>{item.title}</Link>
           ))}
         </div>
       </div>

@@ -3,7 +3,7 @@ const navItems = [
     { title: 'Probate', link: '/probate' },
     { title: 'Stop Foreclosure', link: '/stop-foreclosure' },
     { title: 'Investor Sign Up', link: '/investor-sign' },
-    { title: 'About Us', link: '' },
+    { title: 'About Us', link: '/about-us' },
   ]
 
 module.exports = {

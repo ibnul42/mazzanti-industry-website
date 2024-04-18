@@ -150,6 +150,12 @@ const type_of_house = [
   },
 ]
 
+export const metadata = {
+  title: {
+    default: 'Home - Mazzanti',
+  },
+};
+
 export default function Home() {
   return (
     <main className="flex-1 bg-mazzanti-black text-white">

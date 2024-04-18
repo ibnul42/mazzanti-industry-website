@@ -6,10 +6,12 @@ import Footer from "@/components/Footer";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Mazzanti",
+  title: {
+    default: 'Mazzanti',
+    template: '%s - Mazzanti'
+  },
   description: "Mazzanti",
 };
-
 export default function RootLayout({ children }) {
   return (
     <html lang="en">

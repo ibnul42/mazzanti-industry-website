@@ -87,6 +87,12 @@ const assets = [
     },
 ]
 
+export const metadata = {
+    title: {
+        default: 'About Us',
+    },
+};
+
 export default function page() {
     return (
         <main className="flex-1 bg-mazzanti-black text-white text-center">

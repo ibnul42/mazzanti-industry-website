@@ -58,6 +58,12 @@ const table = [
 
 ]
 
+export const metadata = {
+    title: {
+        default: 'How It Works',
+    },
+};
+
 export default function page() {
     return (
         <main className="flex-1 bg-mazzanti-black text-white text-center">

@@ -4,6 +4,12 @@ import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
 
+export const metadata = {
+  title: {
+    default: 'Probate',
+  },
+};
+
 export default function page() {
   return (
     <main className="flex-1 bg-mazzanti-black text-white text-center">

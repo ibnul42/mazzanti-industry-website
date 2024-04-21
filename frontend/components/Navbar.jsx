@@ -41,7 +41,7 @@ const Navbar = () => {
           ))}
         </div>
       </div>
-      <div className="hidden lg:block bg-mazzanti-black py-0.5 px-4">
+      <div className="hidden lg:block bg-mazzanti-black py-3 px-4">
         <div className="max-w-[1440px] mx-auto flex gap-10 items-center">
           <div className="">
             <Image onClick={() => router.push('/')} src='/assets/logo.svg' height={15} width={15} alt='' className='w-20 h-auto cursor-pointer' />

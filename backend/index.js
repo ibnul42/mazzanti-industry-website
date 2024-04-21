@@ -3,10 +3,10 @@ const express = require("express")
 require("dotenv").config()
 const color = require("colors")
 const cors = require("cors")
-// const connectDB = require("./config/db")
-// const { errorHandler } = require("./middleware/errorMiddleware")
+const connectDB = require("./config/db")
+const { errorHandler } = require("./middleware/errorMiddleware")
 
-// connectDB()
+connectDB()
 
 const port = process.env.PORT || 6501
 
@@ -16,8 +16,8 @@ app.use(cors())
 app.use(express.json())
 app.use(express.urlencoded({ extended: false }))
 
-// app.use("/api/users", require("./routes/userRoutes"))
-// app.use("/api/admin", require("./routes/adminRoutes"))
+app.use("/api/users", require("./routes/userRoutes"))
+app.use("/api/admin", require("./routes/adminRoutes"))
 
 // const fs = require("fs")
 
@@ -34,7 +34,7 @@ app.use(express.urlencoded({ extended: false }))
 //   app.get("/", (req, res) => res.send("please setup production server before"))
 // }
 
-// app.use(errorHandler)
+app.use(errorHandler)
 
 app.listen(port, () => {
   console.log(`Server running on port ${port}`)

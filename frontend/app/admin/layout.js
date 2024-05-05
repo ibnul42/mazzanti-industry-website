@@ -14,7 +14,7 @@ export const metadata = {
 export default function AdminLayout({ children }) {
     return (
         <AdminProvider>
-            <div className="flex-1 flex">
+            <div className="flex-1 flex text-black">
                 <Sidebar />
                 <div className="flex-1 py-2 px-4">
                     {children}

@@ -4,6 +4,7 @@ import { usePathname, useRouter } from 'next/navigation';
 import React from 'react'
 
 const menuItems = [
+    { title: 'Home', path: '/admin/home' },
     { title: 'Profile', path: '/admin/profile' },
     { title: 'How it works', path: '/admin/how-it-works' },
     { title: 'Probate', path: '/admin/probate' },

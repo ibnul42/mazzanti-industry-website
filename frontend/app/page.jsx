@@ -1,4 +1,5 @@
 import Hero from "@/components/Hero";
+import RenderText from "@/components/RenderText";
 import Image from "next/image";
 
 const assets = [
@@ -156,18 +157,41 @@ export const metadata = {
   },
 };
 
-export default function Home() {
+async function getAllGoals() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/admin/home/all-goals`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    cache: 'no-store',
+  });
+
+  if (!res.ok) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return res.json();
+}
+
+export default async function Home() {
+  let goals = [];
+  try {
+    goals = await getAllGoals();
+  } catch (error) {
+    console.error(error);
+    goals = [];
+  }
   return (
     <main className="flex-1 bg-mazzanti-black text-white">
       <Hero title={`We Buy Houses Any Condition`} />
       <div className="bg-mazzanti-gray">
-        <div className="max-w-[1440px] mx-auto py-20 px-4 space-y-10">
-          <p className="font-bold text-xl md:text-2xl lg:text-4xl text-center">OUR END GOAL IS TO HELP YOU FIND YOUR NEW PROPERTY</p>
-          <p className="text-sm md:text-base">At Property Invest – We know that a rewarding real estate search means relating with your goals and accomplishing what you have aimed for. When you choose us, our first ambition is to connect with you and understand your needs. Our international and entrepreneurial team of dynamic real estate professionals reacts quick and advises you through all your questions related to the luxembourgish real estate market.</p>
-          <p className="text-sm md:text-base">Covering all residential areas of Luxembourg and surrounds – in up to 7 languages, we not only offer traditional buying, selling and rental services but also property management support. Property Invest is an expert in the luxembourgish investment and development market and is pleased to offer you our reliable and transparent services. By staying true to our philosophy, we are constantly looking for new real estate investment opportunities and are more than happy to guide you in your real estate transaction processes.</p>
-          <div className=" flex justify-center">
-            <button className="bg-mazzanti-darksky hover:bg-mazzanti-darksky/80 rounded-sm font-bold py-2 px-5">Find Out More</button>
+        {goals?.map((item, index) => (
+          <div key={index} className="max-w-[1440px] mx-auto py-20 px-4 space-y-10">
+            <p className="font-bold text-xl md:text-2xl lg:text-4xl text-center">{item.title}</p>
+            <div className="text-sm md:text-base"><RenderText htmlContent={item.desc} /></div>
           </div>
+        ))}
+        <div className=" flex justify-center">
+          <button className="bg-mazzanti-darksky hover:bg-mazzanti-darksky/80 rounded-sm font-bold py-2 px-5">Find Out More</button>
         </div>
       </div>
       <div className="">

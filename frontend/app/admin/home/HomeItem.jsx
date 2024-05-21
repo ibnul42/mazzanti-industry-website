@@ -1,6 +1,7 @@
 "use client"
 import ItemChips from '@/components/ItemChips';
 import React, { useState } from 'react'
+import AllGoals from './AllGoals';
 
 const items = ['Hero', 'Goals']
 
@@ -13,7 +14,7 @@ export default function HomeItem() {
                 <div className="">HERO</div>
             )}
             {selectedItem === 'Goals' && (
-                <div className="">Goals</div>
+                <AllGoals />
             )}
         </div>
     )

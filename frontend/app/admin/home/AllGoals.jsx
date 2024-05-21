@@ -1,4 +1,4 @@
-import { createWork, deleteWork, editWork } from '@/app/helpers/api';
+import { createGoal, createWork, deleteGoal, deleteWork, editGoal, editWork } from '@/app/helpers/api';
 import { toolbarOptions } from '@/app/helpers/helper';
 import Table from '@/components/Table';
 import axios from 'axios';
@@ -6,7 +6,7 @@ import React, { useEffect, useState } from 'react'
 import ReactQuill from 'react-quill';
 import { toast } from 'react-toastify';
 
-export default function AllWorks() {
+export default function AllGoals() {
     const [works, setWorks] = useState([]);
     const [currentState, setCurrentState] = useState('view');
     const [inputData, setInputData] = useState({
@@ -18,7 +18,7 @@ export default function AllWorks() {
 
     useEffect(() => {
         const getData = () => {
-            axios.get(`${process.env.NEXT_PUBLIC_API}/admin/work/all-works`)
+            axios.get(`${process.env.NEXT_PUBLIC_API}/admin/home/all-goals`)
                 .then(res => {
                     setWorks(res.data.reverse());
                 })
@@ -27,7 +27,7 @@ export default function AllWorks() {
     }, []);
 
     const refreshData = () => {
-        axios.get(`${process.env.NEXT_PUBLIC_API}/admin/work/all-works`)
+        axios.get(`${process.env.NEXT_PUBLIC_API}/admin/home/all-goals`)
             .then(res => {
                 setWorks(res.data.reverse());
                 setInputData({
@@ -49,7 +49,7 @@ export default function AllWorks() {
 
     const onAddData = (e) => {
         e.preventDefault();
-        createWork(inputData)
+        createGoal(inputData)
             .then(res => {
                 toast.success(res.message);
                 refreshData();
@@ -70,7 +70,7 @@ export default function AllWorks() {
 
     const onEditData = (e) => {
         e.preventDefault();
-        editWork({ id: selectedData._id, data: inputData })
+        editGoal({ id: selectedData._id, data: inputData })
             .then(res => {
                 toast.success(res.message);
                 refreshData();
@@ -82,7 +82,7 @@ export default function AllWorks() {
 
     const onDeleteData = (id) => {
         if (confirm("Are you sure you want to delete?")) {
-            deleteWork(id)
+            deleteGoal(id)
                 .then((res) => {
                     toast.success(res.message);
                     refreshData();
@@ -98,10 +98,10 @@ export default function AllWorks() {
     return (
         <div className='flex-1 flex flex-col'>
             <div className="flex justify-between items-center">
-                <h1 className="text-lg font-bold">All Works</h1>
+                <h1 className="text-lg font-bold">All Goals</h1>
                 <button
                     onClick={() => setCurrentState('add')}
-                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add New Work</button>
+                    className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">Add New Goal</button>
             </div>
             {currentState === 'view' &&
                 <Table data={works} onEdit={editBtnHandler} onDelete={onDeleteData} />}

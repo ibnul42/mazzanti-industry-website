@@ -16,6 +16,4 @@ router.get('/work/all-works', getAllWorks)
 router.put('/work/:id', protect, editWork)
 router.delete('/work/:id', protect, deleteWork)
 
-
-
 module.exports = router

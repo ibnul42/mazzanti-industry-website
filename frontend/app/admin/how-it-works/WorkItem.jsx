@@ -1,19 +1,17 @@
 "use client"
 import ItemChips from '@/components/ItemChips';
 import React, { useState } from 'react'
+import AllWorks from './AllWorks';
 
-const items = ['Hero', 'Goals']
+const items = ['All Works']
 
-export default function HomeItem() {
+export default function WorkItem() {
     const [selectedItem, setSelectedItem] = useState(items[0]);
     return (
         <div className='flex-1 flex flex-col gap-2'>
             <ItemChips selectedItem={selectedItem} setSelectedItem={setSelectedItem} items={items} />
-            {selectedItem === 'Hero' && (
-                <div className="">HERO</div>
-            )}
-            {selectedItem === 'Goals' && (
-                <div className="">Goals</div>
+            {selectedItem === 'All Works' && (
+                <AllWorks />
             )}
         </div>
     )

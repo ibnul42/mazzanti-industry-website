@@ -79,17 +79,11 @@ export default function LoginForm() {
             </div>
             <div className="flex items-center justify-center">
                 <button
-                    className="bg-primary border hover:bg-slate-50 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
+                    className="bg-primary border bg-black hover:bg-black/50 font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
                     type="submit"
                 >
                     Sign In
                 </button>
-                {/* <a
-            className="inline-block align-baseline font-bold text-sm text-blue-500 hover:text-blue-800"
-            href="#"
-          >
-            Forgot Password?
-          </a> */}
             </div>
         </form>
     )

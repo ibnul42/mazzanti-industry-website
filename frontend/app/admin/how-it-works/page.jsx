@@ -1,15 +1,17 @@
 import React from 'react'
+import WorkItem from './WorkItem';
 
 export const metadata = {
   title: {
-      default: 'How It Works',
+    default: 'How It Works',
   },
 };
 
-export default function HowItWorkPage() {
+export default function page() {
   return (
-    <div>
-      <p>How it works</p>
-    </div>
+      <div className='flex flex-col gap-2 w-full h-full'>
+          <h1 className='text-2xl font-semibold'>Home</h1>
+          <WorkItem />
+      </div>
   )
 }

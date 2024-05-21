@@ -1,6 +1,6 @@
 const mongoose = require('mongoose')
 
-const goalSchema = mongoose.Schema({
+const howItWorkSchema = mongoose.Schema({
     title: {
         type: String,
         required: [true, 'Please enter a title']
@@ -12,4 +12,4 @@ const goalSchema = mongoose.Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('Goal', goalSchema)
+module.exports = mongoose.model('HowItWork', howItWorkSchema)

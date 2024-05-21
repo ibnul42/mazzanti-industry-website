@@ -31,3 +31,15 @@ body {
     text-wrap: balance;
   }
 }
+
+/* .ql-container.ql-snow {
+  border: none;
+} */
+
+.ql-editor{
+  min-height:200px;
+}
+
+.custom-quill .ql-editor {
+  color: black;
+}

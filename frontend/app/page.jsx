@@ -185,12 +185,12 @@ export default async function Home() {
       <Hero title={`We Buy Houses Any Condition`} />
       <div className="bg-mazzanti-gray">
         {goals?.map((item, index) => (
-          <div key={index} className="max-w-[1440px] mx-auto py-20 px-4 space-y-10">
+          <div key={index} className="max-w-[1440px] mx-auto py-10 px-4 space-y-10">
             <p className="font-bold text-xl md:text-2xl lg:text-4xl text-center">{item.title}</p>
             <div className="text-sm md:text-base"><RenderText htmlContent={item.desc} /></div>
           </div>
         ))}
-        <div className=" flex justify-center">
+        <div className=" flex justify-center py-5">
           <button className="bg-mazzanti-darksky hover:bg-mazzanti-darksky/80 rounded-sm font-bold py-2 px-5">Find Out More</button>
         </div>
       </div>

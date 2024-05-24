@@ -7,7 +7,7 @@ const createGoal = asyncHandler(async (req, res) => {
     // check if all fields are inputed
     if (!title) {
         res.status(404)
-        throw new Error('Please enter all fields')
+        throw new Error('Please enter title')
     }
 
     // create a new goal

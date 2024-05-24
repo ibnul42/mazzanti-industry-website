@@ -1,5 +1,6 @@
 import GetOffer from '@/components/GetOffer'
 import Hero from '@/components/Hero'
+import RenderText from '@/components/RenderText'
 import Image from 'next/image'
 import React from 'react'
 
@@ -64,16 +65,40 @@ export const metadata = {
     },
 };
 
-export default function page() {
+async function getAllItems() {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_API}/admin/foreclosure/all-foreclosures`, {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        cache: 'no-store',
+    });
+
+    if (!res.ok) {
+        throw new Error('Failed to fetch data');
+    }
+
+    return res.json();
+}
+
+export default async function page() {
+    let items = [];
+    try {
+        items = await getAllItems();
+    } catch (error) {
+        console.error(error);
+        items = [];
+    }
     return (
         <main className="flex-1 bg-mazzanti-black text-white text-center">
             <Hero title={`Stop Foreclosure`} />
             <GetOffer />
             <div className="max-w-[1440px] mx-auto pt-5 pb-20 px-4 space-y-8">
-                <p className="font-bold text-xl md:text-2xl lg:text-4xl text-center">Sell Your Home in Foreclosure - The ibuyhomes team knows how to stop foreclosure.</p>
-                <div className="space-y-2">
-                    <p className='text-sm md:text-base'>Homeowners facing foreclosure often feel powerless and overwhelmed, but the ibuyhomes team is here to help. We’re experienced in purchasing homes in foreclosure from people just like you. ibuyhomes can help save your credit by buying your home, taking over your mortgage payments or splitting ownership. We’ll even set you up with a credit repair counselor to help you get your financial life back under control. ibuyhomes gives you three options to stop the stressful process of foreclosure: Option 1: Sell Your House in Foreclosure If your property is worth less than the balance on your mortgage, we’ll initiate a short sale. Lenders often agree to a short sale because it spares them the time, money, and effort involved in foreclosing a home. Even if your bank has not been willing to working with you, they may postpone the foreclosure sale and allow us to buy your home. Option 2: Transfer the Mortgage in Foreclosure If you’re behind on your mortgage, you can turn over the house to us and we’ll assume the payments moving forward. In return we’ll give you a financial incentive of $500-$1000. Don’t let foreclosure jeopardize your financial future. The ibuyhomes team can help you avoid the expenses and stress of foreclosure. Get in touch today at 866-989-1746 or fill out our online form to explore your options. If you decide to work with us, we move quickly to have a contract in your hands within 36 hours.</p>
-                </div>
+                {items?.map((item, index) => (
+                    <div className="space-y-5">
+                        <p className="font-bold text-xl md:text-2xl lg:text-4xl text-center">{item.title}</p>
+                        <div className='text-sm md:text-base'><RenderText htmlContent={item.desc} /></div>
+                    </div>
+                ))}
             </div>
         </main>
     )

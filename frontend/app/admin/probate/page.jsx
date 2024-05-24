@@ -1,15 +1,17 @@
 import React from 'react'
+import ProbateItem from './ProbateItem';
 
 export const metadata = {
-    title: {
-        default: 'Probate',
-    },
+  title: {
+    default: 'Probate',
+  },
 };
 
 export default function ProbatePage() {
   return (
-    <div>
-      <p>Probate</p>
+    <div className='flex flex-col gap-2 w-full h-full'>
+      <h1 className='text-2xl font-semibold'>Probate</h1>
+      <ProbateItem />
     </div>
   )
 }

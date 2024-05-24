@@ -70,11 +70,77 @@ const deleteWork = async (id) => {
     }
 };
 
+const createProbate = async (data) => {
+    try {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API}/admin/probate/create-probate`, data, config);
+
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const editProbate = async ({ id, data }) => {
+    try {
+        const response = await axios.put(`${process.env.NEXT_PUBLIC_API}/admin/probate/${id}`, data, config);
+
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const deleteProbate = async (id) => {
+    try {
+        const response = await axios.delete(`${process.env.NEXT_PUBLIC_API}/admin/probate/${id}`, config);
+
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const createForeclosure = async (data) => {
+    try {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API}/admin/foreclosure/create-foreclosure`, data, config);
+
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const editForeclosure = async ({ id, data }) => {
+    try {
+        const response = await axios.put(`${process.env.NEXT_PUBLIC_API}/admin/foreclosure/${id}`, data, config);
+
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const deleteForeclosure = async (id) => {
+    try {
+        const response = await axios.delete(`${process.env.NEXT_PUBLIC_API}/admin/foreclosure/${id}`, config);
+
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
 module.exports = {
     createGoal,
     editGoal,
     deleteGoal,
     createWork,
     editWork,
-    deleteWork
+    deleteWork,
+    createProbate,
+    editProbate,
+    deleteProbate,
+    createForeclosure,
+    editForeclosure,
+    deleteForeclosure,
 };

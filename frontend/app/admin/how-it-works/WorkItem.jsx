@@ -2,14 +2,18 @@
 import ItemChips from '@/components/ItemChips';
 import React, { useState } from 'react'
 import AllWorks from './AllWorks';
+import HeroSection from '@/components/HeroSection';
 
-const items = ['All Works']
+const items = ['Hero', 'All Works']
 
 export default function WorkItem() {
     const [selectedItem, setSelectedItem] = useState(items[0]);
     return (
         <div className='flex-1 flex flex-col gap-2'>
             <ItemChips selectedItem={selectedItem} setSelectedItem={setSelectedItem} items={items} />
+            {selectedItem === 'Hero' && (
+                <HeroSection type="how-it-works" />
+            )}
             {selectedItem === 'All Works' && (
                 <AllWorks />
             )}

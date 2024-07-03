@@ -3,61 +3,7 @@ import Hero from '@/components/Hero'
 import Image from 'next/image'
 import React from 'react'
 import hero from '@/public/assets/about/Image-01.png'
-
-const table = [
-    {
-        title: `Commissions / Fees:`,
-        sold: `NONE`,
-        selling: `6-7% on average is paid by you, the seller`
-    },
-    {
-        title: `Who Pays Closing Costs?:`,
-        sold: `NONE – We pay all costs`,
-        selling: `3-4% on average is paid by you, the seller`
-    },
-    {
-        title: `Inspection & Financing
-        Contingency*:`,
-        sold: `NONE`,
-        selling: `Yes, up to 15% of sales fall through`
-    },
-    {
-        title: `Appraisal Needed:`,
-        sold: `NONE – We make cash offers`,
-        selling: `Yes, sale is often subject to appraisal`
-    },
-    {
-        title: `Average Days Until Sold:`,
-        sold: `IMMEDIATE CASH OFFER`,
-        selling: `+/- 91 Days`
-    },
-    {
-        title: `Number of Showings:`,
-        sold: `1 (Just Us)`,
-        selling: `10-40`
-    },
-    {
-        title: `Closing Date:`,
-        sold: `The Date Of YOUR CHOICE`,
-        selling: `30-60 +/- days after accepting buyers offer`
-    },
-    {
-        title: `Who Pays For Repairs?:`,
-        sold: `NONE – We pay for all repairs`,
-        selling: `Seller generally covers most repairs`
-    },
-    {
-        title: `Holding Costs?:`,
-        sold: `NONE – We close in 7 days`,
-        selling: `Seller covers Taxes, Mortgage, Insurance, Utilities, maintenance, lawn/snow, association dues (if any) for 4-5 months`
-    },
-    {
-        title: `Total Costs to Sell:`,
-        sold: `NONE – We close in 7 days, pay closing costs and have Zero fees`,
-        selling: `Seller pays commission, closing costs, holding costs,repairs adding up to 10-20% of sale price.`
-    },
-
-]
+import { getHero } from '../utils/helpers'
 
 const assets = [
     {
@@ -93,10 +39,17 @@ export const metadata = {
     },
 };
 
-export default function page() {
+export default async function page() {
+    let heroSection = {};
+    try {
+        heroSection = await getHero('about-us');
+      } catch (error) {
+        console.error(error);
+        goals = [];
+      }
     return (
         <main className="flex-1 bg-mazzanti-black text-white text-center">
-            <Hero bgImage={hero} title={`About Us`} />
+            <Hero title={heroSection.title} bgImage={heroSection.source} />
             <GetOffer />
             <div className="bg-mazzanti-gray">
                 <div className="max-w-[1440px] mx-auto pt-5 pb-20 px-4 space-y-8">

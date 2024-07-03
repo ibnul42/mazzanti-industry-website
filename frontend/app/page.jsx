@@ -1,6 +1,7 @@
 import Hero from "@/components/Hero";
 import RenderText from "@/components/RenderText";
 import Image from "next/image";
+import { getHero } from "./utils/helpers";
 
 const assets = [
   {
@@ -172,17 +173,36 @@ async function getAllGoals() {
   return res.json();
 }
 
+async function getAllProperties() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API}/admin/property/all-property`, {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    cache: 'no-store',
+  });
+
+  if (!res.ok) {
+    return [];
+  }
+
+  return res.json();
+}
+
 export default async function Home() {
   let goals = [];
+  let heroSection = {};
+  let properties = [];
   try {
     goals = await getAllGoals();
+    heroSection = await getHero('home');
+    properties = await getAllProperties();
   } catch (error) {
     console.error(error);
     goals = [];
   }
   return (
     <main className="flex-1 bg-mazzanti-black text-white">
-      <Hero title={`We Buy Houses Any Condition`} />
+      <Hero title={heroSection.title} bgImage={heroSection.source} />
       <div className="bg-mazzanti-gray">
         {goals?.map((item, index) => (
           <div key={index} className="max-w-[1440px] mx-auto py-10 px-4 space-y-10">
@@ -195,7 +215,7 @@ export default async function Home() {
         </div>
       </div>
       <div className="">
-        {assets.map((item, index) => (
+        {properties?.map((item, index) => (
           <div key={index} className={`${index % 2 !== 0 ? 'bg-mazzanti-gray' : ''} border-b border-b-gray-500`}>
             <div className="max-w-[1440px] mx-auto px-4">
               <div className={`grid grid-cols-1 md:grid-cols-2`}>
@@ -204,8 +224,8 @@ export default async function Home() {
                 </div>
                 <div className={`flex flex-col items-center justify-center gap-5 px-2 py-2 ${index % 2 === 0 ? 'order-2' : 'order-2 md:order-1 md:border-r-4'}`}>
                   <p className="py-2 px-5 bg-mazzanti-darksky uppercase font-bold rounded-sm">{item.title}</p>
-                  <button className="px-6 py-2 border hover:bg-white hover:text-mazzanti-darksky hover:font-bold transition-all">{item.buttonText}</button>
-                  <p className="max-w-2xl">{item.desc}</p>
+                  <button className="px-6 py-2 border hover:bg-white hover:text-mazzanti-darksky hover:font-bold transition-all">See All Properties</button>
+                  <p className="max-w-2xl"><RenderText htmlContent={item.desc} /></p>
                 </div>
               </div>
             </div>

@@ -126,13 +126,16 @@ export default function AllOffers() {
                             <th className="px-4 py-2 col-span-1 border-r">
                                 Sl
                             </th>
-                            <th className="px-4 py-2 col-span-4 border-r">
+                            <th className="px-4 py-2 col-span-3 border-r">
                                 Name
                             </th>
-                            <th className="px-4 py-2 col-span-3 border-r">
+                            <th className="px-4 py-2 col-span-2 border-r">
                                 Email
                             </th>
                             <th className="px-4 py-2 col-span-3 border-r">
+                                Address
+                            </th>
+                            <th className="px-4 py-2 col-span-2 border-r">
                                 Phone
                             </th>
                             <th className="px-4 py-2 col-span-1">Action</th>
@@ -145,13 +148,16 @@ export default function AllOffers() {
                                     <td className="px-4 py-2 col-span-1 border-r border-primary flex items-center justify-center">
                                         {index + 1}
                                     </td>
-                                    <td className="px-4 py-2 col-span-4 border-r border-primary flex items-center justify-center text-wrap break-all">
+                                    <td className="px-4 py-2 col-span-3 border-r border-primary flex items-center justify-center text-wrap break-all">
                                         <p>{`${item.firstName} ${item.lastName}`}</p>
                                     </td>
-                                    <td className="px-4 py-2 col-span-3 border-r border-primary flex items-center justify-center text-wrap break-all">
+                                    <td className="px-4 py-2 col-span-2 border-r border-primary flex items-center justify-center text-wrap break-all">
                                         <p>{item.email}</p>
                                     </td>
                                     <td className="px-4 py-2 col-span-3 border-r border-primary flex items-center justify-center text-wrap break-all">
+                                        <p>{item.address}</p>
+                                    </td>
+                                    <td className="px-4 py-2 col-span-2 border-r border-primary flex items-center justify-center text-wrap break-all">
                                         <p>{item.phoneNumber}</p>
                                     </td>
                                     <td className="px-4 py-2 col-span-1 flex justify-center items-center gap-3">

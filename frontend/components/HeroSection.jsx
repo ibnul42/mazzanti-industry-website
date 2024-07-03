@@ -7,14 +7,14 @@ export default function HeroSection({ type }) {
     const [dataChanging, setDataChanging] = useState(false)
     const [currentState, setCurrentState] = useState('view');
     const [selectedData, setSelectedData] = useState();
-    const [file, setFile] = useState()
+    const [file, setFile] = useState();
     const [inputValue, setInputValue] = useState({
         title: '',
     })
 
     const { title } = inputValue
 
-    const [selectedImage, setSelectedImage] = useState('')
+    const [selectedImage, setSelectedImage] = useState('');
 
     useEffect(() => {
         const getData = () => {

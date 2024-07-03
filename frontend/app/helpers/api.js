@@ -130,6 +130,36 @@ const deleteForeclosure = async (id) => {
     }
 };
 
+const createProperty = async (data) => {
+    try {
+        const response = await axios.post(`${process.env.NEXT_PUBLIC_API}/admin/property/create-property`, data, config);
+
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const editProperty = async ({ id, data }) => {
+    try {
+        const response = await axios.put(`${process.env.NEXT_PUBLIC_API}/admin/property/edit-property/${id}`, data, config);
+
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
+const deleteProperty = async (id) => {
+    try {
+        const response = await axios.delete(`${process.env.NEXT_PUBLIC_API}/admin/property/${id}`, config);
+
+        return response.data;
+    } catch (error) {
+        throw error;
+    }
+};
+
 module.exports = {
     createGoal,
     editGoal,
@@ -143,4 +173,7 @@ module.exports = {
     createForeclosure,
     editForeclosure,
     deleteForeclosure,
+    createProperty,
+    editProperty,
+    deleteProperty,
 };

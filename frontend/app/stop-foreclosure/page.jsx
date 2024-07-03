@@ -3,6 +3,7 @@ import Hero from '@/components/Hero'
 import RenderText from '@/components/RenderText'
 import Image from 'next/image'
 import React from 'react'
+import { getHero } from '../utils/helpers'
 
 const table = [
     {
@@ -82,15 +83,17 @@ async function getAllItems() {
 
 export default async function page() {
     let items = [];
+    let heroSection = {};
     try {
         items = await getAllItems();
+        heroSection = await getHero('foreclosure');
     } catch (error) {
         console.error(error);
         items = [];
     }
     return (
         <main className="flex-1 bg-mazzanti-black text-white text-center">
-            <Hero title={`Stop Foreclosure`} />
+            <Hero title={heroSection.title} bgImage={heroSection.source} />
             <GetOffer />
             <div className="max-w-[1440px] mx-auto pt-5 pb-20 px-4 space-y-8">
                 {items?.map((item, index) => (

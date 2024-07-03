@@ -7,6 +7,7 @@ const { createProbate, getAllProbates, editProbate, deleteProbate } = require('.
 const { createForeclosure, getAllForeclosures, editForeclosure, deleteForeclosure } = require('../controllers/foreclosureController')
 const { createOffer, getAllOfferItems, deleteOffer } = require('../controllers/offerController')
 const { getAllHero, createHero, getSingleHero } = require('../controllers/heroController')
+const { getAllProperty, createProperty, editProperty, deleteProperty } = require('../controllers/propertyController')
 
 // home routes
 router.post('/home/create-goal', protect, createGoal)
@@ -42,5 +43,11 @@ router.post('/hero/create-hero', protect, createHero)
 router.get('/hero/all-heros', getAllHero)
 router.get('/hero/single-hero/:type', getSingleHero)
 // router.delete('/offer/:id', protect, deleteOffer)
+
+// property section
+router.get('/property/all-property', getAllProperty)
+router.post('/property/create-property', protect, createProperty)
+router.put('/property/edit-property/:id', editProperty)
+router.delete('/property/:id', protect, deleteProperty)
 
 module.exports = router

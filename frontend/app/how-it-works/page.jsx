@@ -2,6 +2,7 @@ import GetOffer from '@/components/GetOffer'
 import Hero from '@/components/Hero'
 import RenderText from '@/components/RenderText'
 import React from 'react'
+import { getHero } from '../utils/helpers';
 
 export const metadata = {
     title: {
@@ -26,8 +27,10 @@ async function getAllWorks() {
 
 export default async function Page() {
     let works = [];
+    let heroSection = {};
     try {
         works = await getAllWorks();
+        heroSection = await getHero('how-it-works');
     } catch (error) {
         console.error(error);
         works = [];
@@ -35,7 +38,7 @@ export default async function Page() {
 
     return (
         <main className="flex-1 bg-mazzanti-black text-white text-center">
-            <Hero title={`How it Works`} />
+            <Hero title={heroSection.title} bgImage={heroSection.source} />
             <GetOffer />
             <div className="max-w-[1440px] mx-auto pt-5 pb-20 px-4 space-y-8">
                 {works?.map((item, index) => (

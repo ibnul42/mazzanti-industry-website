@@ -3,8 +3,9 @@ import ItemChips from '@/components/ItemChips';
 import React, { useState } from 'react'
 import AllGoals from './AllGoals';
 import HeroSection from '@/components/HeroSection';
+import PropertyItem from './PropertyItem';
 
-const items = ['Hero', 'Goals']
+const items = ['Hero', 'Goals', 'Properties']
 
 export default function HomeItem() {
     const [selectedItem, setSelectedItem] = useState(items[0]);
@@ -13,6 +14,9 @@ export default function HomeItem() {
             <ItemChips selectedItem={selectedItem} setSelectedItem={setSelectedItem} items={items} />
             {selectedItem === 'Hero' && (
                 <HeroSection type="home" />
+            )}
+            {selectedItem === 'Properties' && (
+                <PropertyItem />
             )}
             {selectedItem === 'Goals' && (
                 <AllGoals />

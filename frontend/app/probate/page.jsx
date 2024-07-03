@@ -4,6 +4,7 @@ import RenderText from '@/components/RenderText'
 import Image from 'next/image'
 import Link from 'next/link'
 import React from 'react'
+import { getHero } from '../utils/helpers'
 
 export const metadata = {
   title: {
@@ -28,15 +29,17 @@ async function getAllProbates() {
 
 export default async function Page() {
   let probates = [];
+  let heroSection = {};
   try {
     probates = await getAllProbates();
+    heroSection = await getHero('probate');
   } catch (error) {
     console.error(error);
     probates = [];
   }
   return (
     <main className="flex-1 bg-mazzanti-black text-white text-center">
-      <Hero title={`Probate`} />
+      <Hero title={heroSection.title} bgImage={heroSection.source} />
       <GetOffer />
       <div className="max-w-[1440px] mx-auto pt-5 pb-20 px-4 space-y-8">
         {probates?.map((item, index) => (
